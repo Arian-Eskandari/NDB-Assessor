@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NDB Breach Assessor — Privacy Act 1988 (Cth)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <span class="header-logo">NDB Breach Assessor</span>
+  <span class="header-badge">Privacy Act 1988 (Cth) — Part IIIC</span>
+</header>
+
+<div class="shell">
+
+  <!-- ══════════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════════ -->
+  <aside>
+    <p class="section-label">Assessment steps</p>
+    <ul class="step-list" id="stepList">
+      <li class="step-item active" data-step="0">
+        <span class="step-dot">→</span>
+        <div>
+          <div class="step-name">Introduction</div>
+          <div class="step-sub">Overview &amp; scope</div>
+        </div>
+      </li>
+      <li class="step-item" data-step="1">
+        <span class="step-dot">1</span>
+        <div>
+          <div class="step-name">Incident details</div>
+          <div class="step-sub">Organisation &amp; incident</div>
+        </div>
+      </li>
+      <li class="step-item" data-step="2">
+        <span class="step-dot">2</span>
+        <div>
+          <div class="step-name">Gate 1</div>
+          <div class="step-sub">Eligible data breach</div>
+        </div>
+      </li>
+      <li class="step-item" data-step="3">
+        <span class="step-dot">3</span>
+        <div>
+          <div class="step-name">Gate 2</div>
+          <div class="step-sub">Likely serious harm</div>
+        </div>
+      </li>
+      <li class="step-item" data-step="4">
+        <span class="step-dot">4</span>
+        <div>
+          <div class="step-name">Gate 3</div>
+          <div class="step-sub">Exemptions</div>
+        </div>
+      </li>
+      <li class="step-item" data-step="5">
+        <span class="step-dot">5</span>
+        <div>
+          <div class="step-name">Assessment result</div>
+          <div class="step-sub">Outcome &amp; draft notice</div>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="sidebar-divider">
+
+    <p class="legal-note">
+      Based on the OAIC Notifiable Data Breaches scheme guidelines and Part IIIC of the Privacy Act 1988 (Cth).<br><br>
+      This tool is for educational and portfolio purposes only. It does not constitute legal advice.
+    </p>
+  </aside>
+
+  <!-- ══════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════ -->
+  <main>
+
+    <!-- ── STEP 0: Introduction ── -->
+    <div class="step-panel active" id="step-0">
+      <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+      <span class="gate-badge">NDB Scheme</span>
+      <h1 class="panel-title">Data Breach<br>Eligibility Assessor</h1>
+      <p class="panel-desc">This tool walks you through Australia's Notifiable Data Breaches (NDB) three-gate eligibility test. At the end you'll receive a determination and a draft OAIC notification statement.</p>
+
+      <div class="intro-grid">
+        <div class="intro-card">
+          <div class="intro-card-label">Authority</div>
+          <div class="intro-card-val" style="font-size:15px;font-family:var(--mono)">Privacy Act 1988</div>
+          <div class="intro-card-sub">Part IIIC — Notifiable Data Breaches</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-label">Notify within</div>
+          <div class="intro-card-val">30 days</div>
+          <div class="intro-card-sub">of becoming aware of the breach</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-label">Eligibility gates</div>
+          <div class="intro-card-val">3</div>
+          <div class="intro-card-sub">All must be satisfied to notify</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-label">Notify</div>
+          <div class="intro-card-val" style="font-size:15px;font-family:var(--mono)">OAIC + individuals</div>
+          <div class="intro-card-sub">If all three gates pass</div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This tool is built for educational and portfolio purposes and does not constitute legal advice. Consult a qualified privacy lawyer or the OAIC directly for actual incident response.
+      </div>
+
+      <div class="nav-row">
+        <button class="btn-primary" onclick="goTo(1)">Begin assessment →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 1: Incident details ── -->
+    <div class="step-panel" id="step-1">
+      <div class="progress-bar"><div class="progress-fill" style="width:16%"></div></div>
+      <span class="gate-badge">Step 1 of 4</span>
+      <h1 class="panel-title">Incident details</h1>
+      <p class="panel-desc">Provide basic details about the organisation and the incident. These will appear in the generated assessment report.</p>
+
+      <div class="field">
+        <label for="f-org">Organisation name</label>
+        <input type="text" id="f-org" placeholder="e.g. Riverside Medical Clinic">
+        <div class="field-error" id="err-org">Required</div>
+      </div>
+
+      <div class="field">
+        <label for="f-date">Date incident was discovered</label>
+        <input type="date" id="f-date">
+        <div class="field-error" id="err-date">Required</div>
+      </div>
+
+      <div class="field">
+        <label for="f-desc">Brief description of the incident</label>
+        <textarea id="f-desc" rows="3" placeholder="e.g. Ransomware attack exfiltrated patient database backup prior to encryption."></textarea>
+        <div class="field-error" id="err-desc">Required</div>
+      </div>
+
+      <div class="field">
+        <label for="f-datatypes">Types of personal information involved</label>
+        <div class="field-hint">List the categories — e.g. names, DOB, Medicare numbers, health records</div>
+        <textarea id="f-datatypes" rows="2" placeholder="e.g. Full names, dates of birth, Medicare numbers, medical diagnoses"></textarea>
+        <div class="field-error" id="err-datatypes">Required</div>
+      </div>
+
+      <div class="field">
+        <label for="f-count">Estimated number of individuals affected</label>
+        <input type="text" id="f-count" placeholder="e.g. 1200">
+        <div class="field-error" id="err-count">Required</div>
+      </div>
+
+      <div class="field">
+        <label for="f-assessor">Assessor name</label>
+        <input type="text" id="f-assessor" placeholder="Your name">
+        <div class="field-error" id="err-assessor">Required</div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn-ghost" onclick="goTo(0)">← Back</button>
+        <button class="btn-primary" onclick="validateStep1()">Continue →</button>
+        <span class="nav-hint">Gate 1 next</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Gate 1 ── -->
+    <div class="step-panel" id="step-2">
+      <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
+      <span class="gate-badge">Gate 1</span>
+      <h1 class="panel-title">Eligible data breach</h1>
+      <p class="panel-desc">A breach is eligible under s26WE if it involves unauthorised access to, unauthorised disclosure of, or loss of personal information held by the organisation.</p>
+
+      <div class="question-card">
+        <p class="question-text">Did the incident involve <strong>personal information</strong> held by your organisation?</p>
+        <p class="question-sub">Personal information = any info about an identified or reasonably identifiable individual</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g1_personal_info', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g1_personal_info', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Was there <strong>unauthorised access</strong> to, <strong>unauthorised disclosure</strong> of, or <strong>loss</strong> of that information?</p>
+        <p class="question-sub">Loss = losing physical control, e.g. stolen device, misdelivered file, exfiltration</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g1_unauthorised', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g1_unauthorised', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn-ghost" onclick="goTo(1)">← Back</button>
+        <button class="btn-primary" onclick="validateGate1()">Continue →</button>
+        <span class="nav-hint">Gate 2 next</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Gate 2 ── -->
+    <div class="step-panel" id="step-3">
+      <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+      <span class="gate-badge">Gate 2</span>
+      <h1 class="panel-title">Likely serious harm</h1>
+      <p class="panel-desc">Would a reasonable person in the organisation's position conclude the breach is likely to result in serious harm to one or more affected individuals? Answer each factor below.</p>
+
+      <div class="question-card">
+        <p class="question-text">Does the information include <strong>sensitive data</strong>?</p>
+        <p class="question-sub">Health, financial, government ID, biometric, sexual orientation, criminal record, etc.</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_sensitive', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_sensitive', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Did the breach affect <strong>more than 50 individuals</strong>?</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_volume', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_volume', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Was the breach the result of a <strong>malicious or criminal act</strong>?</p>
+        <p class="question-sub">e.g. ransomware, hacking, insider theft, social engineering</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_malicious', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_malicious', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Could the information be reasonably used to commit <strong>identity fraud</strong>?</p>
+        <p class="question-sub">Combinations like name + DOB + ID number are particularly high risk</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_identity_risk', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_identity_risk', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Could the information reasonably cause <strong>financial harm</strong> to affected individuals?</p>
+        <p class="question-sub">e.g. account takeover, Medicare fraud, credit fraud</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_financial_risk', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_financial_risk', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Could the disclosure put any individual at risk of <strong>physical harm or harassment</strong>?</p>
+        <p class="question-sub">e.g. location data for a domestic violence victim, address + identity of a protected person</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g2_physical_risk', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g2_physical_risk', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn-ghost" onclick="goTo(2)">← Back</button>
+        <button class="btn-primary" onclick="validateGate2()">Continue →</button>
+        <span class="nav-hint">Gate 3 next</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: Gate 3 ── -->
+    <div class="step-panel" id="step-4">
+      <div class="progress-bar"><div class="progress-fill" style="width:66%"></div></div>
+      <span class="gate-badge">Gate 3</span>
+      <h1 class="panel-title">Exemptions</h1>
+      <p class="panel-desc">Even if Gates 1 and 2 are satisfied, notification may not be required if an exemption applies under Part IIIC of the Privacy Act.</p>
+
+      <div class="question-card">
+        <p class="question-text">Has the organisation taken <strong>remedial action</strong> that removes the likelihood of serious harm before individuals are affected?</p>
+        <p class="question-sub">e.g. encrypted data where the key was never compromised, or a misdirected email retrieved unread — s26WF exemption</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g3_remedied', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g3_remedied', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Has a <strong>law enforcement body</strong> requested that notification be delayed or not made?</p>
+        <p class="question-sub">s26WN exemption — must be a formal request from an authorised body</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g3_law_enforcement', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g3_law_enforcement', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text">Does another <strong>Australian law prohibit</strong> the notification?</p>
+        <p class="question-sub">e.g. certain intelligence legislation or court-ordered suppression</p>
+        <div class="yn-group">
+          <button class="yn-btn yes" onclick="setAnswer('g3_other_law', true, this)">Yes</button>
+          <button class="yn-btn no"  onclick="setAnswer('g3_other_law', false, this)">No</button>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn-ghost" onclick="goTo(3)">← Back</button>
+        <button class="btn-primary" onclick="validateGate3()">View result →</button>
+        <span class="nav-hint">Final assessment next</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: Result ── -->
+    <div class="step-panel" id="step-5">
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+
+      <div id="result-banner-container"></div>
+
+      <p class="result-section-title">Gate analysis</p>
+      <div id="gate-summary-container"></div>
+
+      <div id="harm-section-container"></div>
+      <div id="actions-container"></div>
+      <div id="draft-container"></div>
+
+      <div class="nav-row" style="margin-top:2rem">
+        <button class="btn-ghost" onclick="resetAll()">← Start new assessment</button>
+        <button class="btn-primary" onclick="window.print()">Print / Save PDF</button>
+      </div>
+
+      <div class="disclaimer" style="margin-top:1.5rem">
+        <strong>Disclaimer:</strong> This automated assessment is for educational and portfolio purposes only. It does not constitute legal advice. Decisions about notifying the OAIC should involve a qualified privacy professional.
+      </div>
+    </div>
+
+  </main>
+</div><!-- /.shell -->
+
+<script src="app.js"></script>
+</body>
+</html>
