@@ -49,11 +49,27 @@ ndb-assessor/
 └── README.md
 
 
-Tech stack
+---- Tech stack ----
 - CLI: Python 3, colorama
 - Report generation: python-docx
 - Web interface: HTML, CSS, JavaScript — no frameworks or build tools
 - AI: Claude (free tier is sufficient)
+
+---- Installation ----
+In the terminal: 
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the CLI assessor
+python main.py
+
+---- Running ----
+
+You can either run the whole application using python in terminal:
+python -m http.server 8000
+
+Or simply opening index.html using your browser.
 
 ---- Legal basis ----
 
